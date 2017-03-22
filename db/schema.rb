@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319173347) do
+ActiveRecord::Schema.define(version: 20170320164048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,33 @@ ActiveRecord::Schema.define(version: 20170319173347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string   "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "conversation_id"
+    t.integer  "creator"
+    t.string   "content"
+    t.integer  "participants",    default: [],              array: true
+    t.text     "messages",        default: [],              array: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+
+  create_table "participations", force: :cascade do |t|
+    t.integer  "converation_id"
+    t.boolean  "isOwner"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "participations", ["converation_id"], name: "index_participations_on_converation_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
