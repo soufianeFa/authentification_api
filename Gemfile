@@ -36,6 +36,8 @@ gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'factory_girl'
+  gem 'ffaker'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
@@ -43,6 +45,7 @@ group :development, :test do
   gem 'pry-awesome_print'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'rspec-core'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'byebug'

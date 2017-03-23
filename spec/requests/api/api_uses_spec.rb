@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    email "soufiane@gamil.com"
-    password "soufiane"
+    email { FFaker::Internet.email }
+    password { Devise.friendly_token.first(8) }
   end
 end
