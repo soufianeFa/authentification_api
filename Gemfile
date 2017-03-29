@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'activesupport', '~> 4.2', '>= 4.2.6'
 gem 'devise_token_auth'
 gem 'puma'
 gem 'rack-cors'
@@ -36,7 +38,7 @@ gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -46,13 +48,21 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rspec-core'
+  gem 'capybara'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'byebug'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
+  gem 'vcr'
 end
 
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+#
+# group :development do
+#   # Access an IRB console on exception pages or by using <%= console %> in views
+#   gem 'web-console', '~> 2.0'
+# end
+group :test do
+  gem 'webmock'
 end
 
